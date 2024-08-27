@@ -9,7 +9,6 @@
       class="section-container"
     >
       <input formControlName="sectionTitle" placeholder="Section Title" />
-      <!-- Fields -->
       <div class="fields" formArrayName="fields">
         <div
           *ngFor="let field of getFields(i).controls; let j = index"

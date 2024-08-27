@@ -7,6 +7,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   selector: 'app-forms',
   standalone: true,
   imports: [CommonModule,FormsComponent,RouterOutlet,RouterLink],
+  providers: [UserService],
   templateUrl: './forms.component.html',
   styleUrls: ['./forms.component.css']
 })

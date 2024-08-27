@@ -1,6 +1,53 @@
-<ul *ngFor="let item of data">
-    <li style="color:white"><a [routerLink]="['/editForm', item?._id]"
-    routerLinkActive="router-link-active">{{ item?.formTitle }}</a>
-    </li>
-  </ul>
+<div>
+  <a routerLink="/createForm" style="padding-left: 688px;">
+    <button>Create Form!</button>
+  </a>
+</div>
+
+<hr/>
+
+<div class="card-container">
+  <div *ngFor="let item of data" class="card">
+    <div class="card-content">
+      <h3>{{ item?.formTitle }}</h3>
+      <a [routerLink]="['/editForm', item?._id]" routerLinkActive="router-link-active">
+        Edit Form
+      </a>
+    </div>
+  </div>
+</div>
+
 <router-outlet></router-outlet>
+
+<!-- Add some basic styles for the cards -->
+<style>
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+  .card {
+    background-color: #333;
+    color: white;
+    border-radius: 8px;
+    padding: 16px;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .card-content h3 {
+    margin: 0 0 8px 0;
+  }
+  .card-content a {
+    color: #1e90ff;
+    text-decoration: none;
+  }
+  .card-content a:hover {
+    text-decoration: underline;
+  }
+</style>

@@ -8,6 +8,7 @@ import { UserService } from '../user.service';
   selector: 'app-edit-form',
   standalone: true,
   imports: [ReactiveFormsModule,CommonModule,FormsModule],
+  providers: [UserService],
   templateUrl: './edit-form.component.html',
   styleUrls: ['./edit-form.component.css']
 })
