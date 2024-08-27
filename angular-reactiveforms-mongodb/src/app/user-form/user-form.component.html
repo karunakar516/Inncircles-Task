@@ -50,11 +50,11 @@
             </div>
             <button type="button" (click)="addOption(i, j)">Add Option</button>
           </div>
-          
-          <div style="flex-direction: row;">Required<input type="checkbox" formControlName="require"/></div>
-          <div style="flex-direction: row;">Show On Card<input type="checkbox" formControlName="showCard" /> </div>
-          <div style="flex-direction: row; ">Unique<input type="checkbox" formControlName="unique" /></div> 
-
+          <div style="display: flex; padding-left: 2px;">
+          <div style="display:flex; flex-direction: row; padding-left: 3px; padding-right: 3px; border: 1px solid rgba(156, 153, 153, 0.322); margin-right: 2px;"><p style="margin-top:7px">Required</p><input style="width: fit-content" type="checkbox" formControlName="require"/></div>
+          <div style="display: flex; flex-direction: row;padding-left: 3px; padding-right: 3px; border: 1px solid rgba(156, 153, 153, 0.322); margin-right: 2px;"> <p style="margin-top:7px;margin-left: 15px;" >Show On Card</p><input type="checkbox" style="width: fit-content;" formControlName="showCard" /> </div>
+          <div style="display:flex;flex-direction:row; padding-left: 3px; padding-right: 3px; border: 1px solid rgba(156, 153, 153, 0.322);"><p style="margin-top:7px;margin-left: 15px;">Unique</p><input type="checkbox" formControlName="unique" style="width:fit-content" /></div> 
+          </div>
           <button type="button" class="dlt" (click)="removeField(i, j)">
             Delete this Field
           </button>
