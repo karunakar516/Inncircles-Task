@@ -65,6 +65,19 @@ export class UserFormComponent implements OnInit {
     (field.get('options') as FormArray).push(this.fb.control(''));
   }
 
+  removeSection(sectionIndex: number): void {
+    this.getSections().removeAt(sectionIndex);
+  }
+
+  removeField(sectionIndex: number, fieldIndex: number): void {
+    this.getFields(sectionIndex).removeAt(fieldIndex);
+  }
+
+  removeOption(sectionIndex: number, fieldIndex: number, optionIndex: number): void {
+    const field = this.getField(sectionIndex, fieldIndex);
+    (field.get('options') as FormArray).removeAt(optionIndex);
+  }
+
   submit(): void {
     if (this.userForm.valid) {
       const formData = this.prepareFormData(this.userForm.value);

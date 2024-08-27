@@ -40,6 +40,7 @@
               "
             >
               <input [formControlName]="k" placeholder="Option" />
+              <button type="button" (click)="removeOption(i, j, k)">Delete this Option </button>
             </div>
             <button type="button" (click)="addOption(i, j)">Add Option</button>
           </div>
@@ -48,9 +49,11 @@
           <input type="checkbox" formControlName="showCard" /> Show on Card
           <input type="checkbox" formControlName="unique" /> Unique
 
+          <button type="button" (click)="removeField(i,j)">Delete this Field</button>
         </div>
       </div>
       <button type="button" (click)="addField(i)">Add Field</button>
+      <button type="button" (click)="removeSection(i)">Delete this Section</button>
     </div>
     <button type="button" (click)="addSection()">Add Section</button>
   </div>
