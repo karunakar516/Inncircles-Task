@@ -93,7 +93,8 @@ export class UserFormComponent implements OnInit {
       const formData = this.prepareFormData(this.userForm.value);
       this.userservice.postData(formData).subscribe(
         (response) => {
-          console.log('Form submitted successfully:', response);
+          alert('Form submitted successfully');
+          this.ngOnInit();
         },
         (error) => {
           console.log('Error submitting form:', error);
