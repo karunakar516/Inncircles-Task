@@ -1,0 +1,57 @@
+<h1>Reactive Forms-Task</h1>
+<hr/>
+<form [formGroup]="userForm" (ngSubmit)="submit()">
+  <input formControlName="formTitle" placeholder="Form Title" />
+  <div formArrayName="sections">
+    <div
+      *ngFor="let section of getSections().controls; let i = index"
+      [formGroupName]="i"
+    >
+      <input formControlName="sectionTitle" placeholder="Section Title" />
+
+      <div formArrayName="fields">
+        <div
+          *ngFor="let field of getFields(i).controls; let j = index"
+          [formGroupName]="j"
+        >
+          <input formControlName="title" placeholder="Field Title" />
+          <select formControlName="body">
+            <option value="text">Text</option>
+            <option value="number">Number</option>
+            <option value="date">Date</option>
+            <option value="multiSelect">Multi Select</option>
+            <option value="singleSelect">Single Select</option>
+          </select>
+
+          <input
+            *ngIf="!isMultiSelectOrSingleSelect(field)"
+            formControlName="value"
+            placeholder="Value"
+          />
+
+          <div
+            formArrayName="options"
+            *ngIf="isMultiSelectOrSingleSelect(field)"
+          >
+            <div
+              *ngFor="
+                let option of field.get('options').controls;
+                let k = index
+              "
+            >
+              <input [formControlName]="k" placeholder="Option" />
+            </div>
+            <button type="button" (click)="addOption(i, j)">Add Option</button>
+          </div>
+
+          <input type="checkbox" formControlName="require" /> Required
+          <input type="checkbox" formControlName="showCard" /> Show on Card
+          <input type="checkbox" formControlName="unique" /> Unique
+        </div>
+      </div>
+      <button type="button" (click)="addField(i)">Add Field</button>
+    </div>
+    <button type="button" (click)="addSection()">Add Section</button>
+  </div>
+  <button type="submit">Submit</button>
+</form>
