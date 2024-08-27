@@ -1,27 +1,31 @@
 <h2>Reactive Forms-Task</h2>
-<hr/>
+<hr />
 <form [formGroup]="userForm" (ngSubmit)="submit()">
   <input class="fTitle" formControlName="formTitle" placeholder="Form Title" />
-  <div formArrayName="sections">
+  <div formArrayName="sections" class="sections">
     <div
       *ngFor="let section of getSections().controls; let i = index"
       [formGroupName]="i"
+      class="section-container"
     >
       <input formControlName="sectionTitle" placeholder="Section Title" />
-
-      <div formArrayName="fields">
+      <!-- Fields -->
+      <div class="fields" formArrayName="fields">
         <div
           *ngFor="let field of getFields(i).controls; let j = index"
           [formGroupName]="j"
+          class="field-container"
         >
           <input formControlName="title" placeholder="Field Title" />
-          <select formControlName="body">
-            <option value="text">Text</option>
-            <option value="number">Number</option>
-            <option value="date">Date</option>
-            <option value="multiSelect">Multi Select</option>
-            <option value="singleSelect">Single Select</option>
-          </select>
+          <div class="field-options">
+            <select formControlName="body">
+              <option [defaultSelected]="true" value="text">Text</option>
+              <option value="number">Number</option>
+              <option value="date">Date</option>
+              <option value="multiSelect">Multi Select</option>
+              <option value="singleSelect">Single Select</option>
+            </select>
+          </div>
 
           <input
             *ngIf="!isMultiSelectOrSingleSelect(field)"
@@ -40,22 +44,28 @@
               "
             >
               <input [formControlName]="k" placeholder="Option" />
-              <button type="button" (click)="removeOption(i, j, k)">Delete this Option </button>
+              <button type="button" class="add-btn" class="dlt" (click)="removeOption(i, j, k)">
+                Delete this Option
+              </button>
             </div>
             <button type="button" (click)="addOption(i, j)">Add Option</button>
           </div>
+          
+          <div style="flex-direction: row;">Required<input type="checkbox" formControlName="require"/></div>
+          <div style="flex-direction: row;">Show On Card<input type="checkbox" formControlName="showCard" /> </div>
+          <div style="flex-direction: row; ">Unique<input type="checkbox" formControlName="unique" /></div> 
 
-          <input type="checkbox" formControlName="require" /> Required
-          <input type="checkbox" formControlName="showCard" /> Show on Card
-          <input type="checkbox" formControlName="unique" /> Unique
-
-          <button type="button" (click)="removeField(i,j)">Delete this Field</button>
+          <button type="button" class="dlt" (click)="removeField(i, j)">
+            Delete this Field
+          </button>
         </div>
       </div>
-      <button type="button" (click)="addField(i)">Add Field</button>
-      <button type="button" (click)="removeSection(i)">Delete this Section</button>
+      <button type="button" class="add-btn" (click)="addField(i)">Add Field</button>
+      <button type="button" class="dlt" (click)="removeSection(i)">
+        Delete this Section
+      </button>
     </div>
-    <button type="button" (click)="addSection()">Add Section</button>
+    <button type="button" class="add-btn" (click)="addSection()">Add Section</button>
   </div>
-  <button type="submit">Submit</button>
+  <button class="add-btn" type="submit">Submit</button>
 </form>
