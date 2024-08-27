@@ -1,8 +1,8 @@
 <h2>Reactive Forms-Task</h2>
-<hr/>
+<hr />
 <form [formGroup]="userForm" (ngSubmit)="submit()">
   <input class="fTitle" formControlName="formTitle" placeholder="Form Title" />
-  <div formArrayName="sections">
+  <div formArrayName="sections" class="sections">
     <div
       *ngFor="let section of getSections().controls; let i = index"
       [formGroupName]="i"
@@ -17,13 +17,15 @@
           class="field-container"
         >
           <input formControlName="title" placeholder="Field Title" />
-          <select formControlName="body">
-            <option value="text">Text</option>
-            <option value="number">Number</option>
-            <option value="date">Date</option>
-            <option value="multiSelect">Multi Select</option>
-            <option value="singleSelect">Single Select</option>
-          </select>
+          <div class="field-options">
+            <select formControlName="body">
+              <option [defaultSelected]="true" value="text">Text</option>
+              <option value="number">Number</option>
+              <option value="date">Date</option>
+              <option value="multiSelect">Multi Select</option>
+              <option value="singleSelect">Single Select</option>
+            </select>
+          </div>
 
           <input
             *ngIf="!isMultiSelectOrSingleSelect(field)"
@@ -48,12 +50,14 @@
             </div>
             <button type="button" (click)="addOption(i, j)">Add Option</button>
           </div>
+          
+          <div style="flex-direction: row;">Required<input type="checkbox" formControlName="require"/></div>
+          <div style="flex-direction: row;">Show On Card<input type="checkbox" formControlName="showCard" /> </div>
+          <div style="flex-direction: row; ">Unique<input type="checkbox" formControlName="unique" /></div> 
 
-          <input type="checkbox" formControlName="require" /> Required
-          <input type="checkbox" formControlName="showCard" /> Show on Card
-          <input type="checkbox" formControlName="unique" /> Unique
-
-          <button type="button" (click)="removeField(i,j)">Delete this Field</button>
+          <button type="button" class="dlt" (click)="removeField(i, j)">
+            Delete this Field
+          </button>
         </div>
       </div>
       <button type="button" class="add-btn" (click)="addField(i)">Add Field</button>
