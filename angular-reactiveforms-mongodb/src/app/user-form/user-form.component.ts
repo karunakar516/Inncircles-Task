@@ -101,7 +101,7 @@ export class UserFormComponent implements OnInit {
       );
     } else {
       this.userForm.markAllAsTouched();
-      this.logValidationErrors(this.userForm); // Log validation errors
+      this.logValidationErrors(this.userForm); 
       console.log('Form is invalid', this.userForm.value);
     }
   }
