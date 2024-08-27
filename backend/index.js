@@ -7,6 +7,7 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParse.json());
+app.use(bodyParse.urlencoded({ extended: true }));
 
 mongoose
   .connect("mongodb://localhost:27017/Angular-All-Data")
