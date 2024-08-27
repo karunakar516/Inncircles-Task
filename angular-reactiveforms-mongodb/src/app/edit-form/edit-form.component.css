@@ -1,0 +1,145 @@
+h2 {
+  text-align: center;
+  color: aliceblue;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(8, 133, 241);
+  border-radius: 30px;
+  box-shadow: 0 2px 10px grey;
+  height: 75vh;
+  width: 90%;
+  padding: 20px;
+  margin: auto;
+  box-sizing: border-box;
+}
+.sections {
+    margin: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  .section-container {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .section-container input[formControlName="sectionTitle"] {
+    width: 50vh;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+  }
+  
+  .fields {
+    padding-left: 20px;
+    flex-direction: column;
+  }
+  
+
+  .field-container {
+    border-bottom:1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    align-items: flex-start;
+    justify-content: space-around;
+  }
+  
+
+  .field-container input[formControlName="title"] {
+    margin-right: 10px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .field-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 2;
+  }
+
+  .field-options select,
+  .field-options input,
+  .field-options button {
+    size: 3px;
+    margin-right: 10px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+
+  .dlt {
+    background-color: #dc3545;
+  }
+  
+  .dlt:hover {
+    background-color: #ff0019;
+  }
+  
+
+  .field-container div[formArrayName="options"] input {
+    margin-right: 5px;
+  }
+  
+  .field-container input[type="checkbox"] {
+    margin-left: 10px;
+    transform: scale(1.2);
+  }
+  .add-btn {
+    background-color: #28a745;
+    margin-top: 10px;
+  }
+  
+  .add-btn:hover {
+    background-color: #218838;
+  }
+input {
+  height: 15px;
+  width: 50vh;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+
+  border-radius: 8px;
+  text-align: center;
+}
+
+
+button {
+  background-color: cornflowerblue;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+button:hover {
+  background-color: #0e24ec;
+}
+.dlt:hover {
+  background-color: crimson;
+}

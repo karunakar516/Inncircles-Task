@@ -28,8 +28,35 @@ mongoose
     }
   });
 
-app.get("/", (req, res) => {
-  res.send("Test Okay!");
+app.get("/api/user", async (req, res) => {
+  try{
+    const data = await FormData.find();
+    res.status(200).json({ message: "Data fetched successfully", data: data}); 
+  }
+  catch(e){
+    console.error("Error fetching data:", e);
+    res.status(500).json({ message: "Failed to fetch data", error: e.message });
+  }
+});
+app.get("/api/user/:id", async (req, res) => {
+  try{
+    const data = await FormData.findById(req.params.id);
+    res.status(200).json({ message: "Data fetched successfully", data: data}); 
+  }
+  catch(e){
+    console.error("Error fetching data:", e);
+    res.status(500).json({ message: "Failed to fetch data", error: e.message });
+  }
+});
+app.put("/api/user/:id", async (req, res) => {  
+  try{
+    const data = await FormData.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.status(200).json({ message: "Data updated successfully", data: data});  
+  }
+  catch(e){
+    console.error("Error updating data:", e);
+    res.status(500).json({ message: "Failed to update data", error: e.message });
+  }
 });
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
