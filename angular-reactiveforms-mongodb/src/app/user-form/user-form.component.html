@@ -1,7 +1,7 @@
-<h2>Reactive Forms-Task</h2>
+<h1>Reactive Forms-Task</h1>
 <hr/>
 <form [formGroup]="userForm" (ngSubmit)="submit()">
-  <input class="fTitle" formControlName="formTitle" placeholder="Form Title" />
+  <input formControlName="formTitle" placeholder="Form Title" />
   <div formArrayName="sections">
     <div
       *ngFor="let section of getSections().controls; let i = index"
@@ -16,7 +16,7 @@
         >
           <input formControlName="title" placeholder="Field Title" />
           <select formControlName="body">
-            <option value="text">Text</option>
+            <option [defaultSelected]="true" value="text">Text</option>
             <option value="number">Number</option>
             <option value="date">Date</option>
             <option value="multiSelect">Multi Select</option>
@@ -48,7 +48,6 @@
           <input type="checkbox" formControlName="require" /> Required
           <input type="checkbox" formControlName="showCard" /> Show on Card
           <input type="checkbox" formControlName="unique" /> Unique
-
           <button type="button" (click)="removeField(i,j)">Delete this Field</button>
         </div>
       </div>

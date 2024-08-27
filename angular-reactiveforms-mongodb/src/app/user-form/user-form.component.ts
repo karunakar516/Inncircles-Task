@@ -51,7 +51,7 @@ export class UserFormComponent implements OnInit {
     const field = this.fb.group({
       title: ['', Validators.required],
       body: ['', Validators.required],
-      value: [''],
+      value: [{value:'',disabled: true}],
       options: this.fb.array([]),
       require: [false],
       showCard: [false],
