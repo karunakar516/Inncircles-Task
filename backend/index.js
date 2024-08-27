@@ -21,7 +21,6 @@ mongoose
   app.post("/api/user",(req, res) => {
     try {
       const newUser =FormData.create(req.body);
-      // console.log("New user created:", newUser);
       res.status(201).json({ message: "User data saved successfully", data: newUser });
     } catch (e) {
       console.error("Error saving user data:", e);

@@ -12,9 +12,8 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   postData(userData: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, userData).pipe(
-      catchError(this.handleError)
-    );
+    console.log(userData)
+    return this.http.post<any>(this.apiUrl, userData).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

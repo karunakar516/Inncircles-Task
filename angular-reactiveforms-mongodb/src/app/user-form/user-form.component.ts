@@ -22,6 +22,7 @@ export class UserFormComponent implements OnInit {
   userForm!: FormGroup;
 
   constructor(private fb: FormBuilder, public userservice: UserService) {}
+
   ngOnInit(): void {
     this.initForm();
     this.addSection();
@@ -50,7 +51,7 @@ export class UserFormComponent implements OnInit {
     const field = this.fb.group({
       title: ['', Validators.required],
       body: ['', Validators.required],
-      value: [{ value: '', disabled: false }],
+      value: [''],
       options: this.fb.array([]),
       require: [false],
       showCard: [false],
@@ -65,14 +66,38 @@ export class UserFormComponent implements OnInit {
   }
 
   submit(): void {
-    // if (this.userForm.valid) {
-    //   console.log(this.userForm.value);
-    // } else {
-    //   this.userForm.markAllAsTouched();
-    //   console.log('Form is invalid');
-    // }
-    //console.log(this.userForm.value);
-    this.userservice.postData(this.userForm.value);
+    if (this.userForm.valid) {
+      const formData = this.prepareFormData(this.userForm.value);
+      this.userservice.postData(formData).subscribe(
+        (response) => {
+          console.log('Form submitted successfully:', response);
+        },
+        (error) => {
+          console.log('Error submitting form:', error);
+        }
+      );
+    } else {
+      this.userForm.markAllAsTouched();
+      console.log('Form is invalid');
+    }
+  }
+
+  prepareFormData(formValue: any): any {
+    const preparedSections = formValue.sections.map((section: any) => {
+      const preparedFields = section.fields.map((field: any) => ({
+        ...field,
+        options: field.body === 'multiSelect' || field.body === 'singleSelect' ? field.options : [],
+      }));
+      return {
+        ...section,
+        fields: preparedFields,
+      };
+    });
+
+    return {
+      ...formValue,
+      sections: preparedSections,
+    };
   }
 
   getFields(sectionIndex: number): FormArray {
