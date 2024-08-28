@@ -50,6 +50,7 @@ export class UserFormComponent implements OnInit {
   addField(sectionIndex: number): void {
     const field = this.fb.group({
       title: ['', Validators.required],
+      
       body: ['text', Validators.required],
       value: [{ value: '', disabled: true }],
       options: this.fb.array([]),
@@ -81,6 +82,16 @@ export class UserFormComponent implements OnInit {
     const field = this.getField(sectionIndex, fieldIndex);
     (field.get('options') as FormArray).removeAt(optionIndex);
   }
+  logValidationErrors(group: FormGroup | FormArray): void {
+    Object.keys(group.controls).forEach((key: string) => {
+      const control = group.get(key);
+      if (control instanceof FormGroup || control instanceof FormArray) {
+        this.logValidationErrors(control);
+      } else if (control && control.invalid) {
+        console.log(`Control ${key} is invalid:`, control.errors);
+      }
+    });
+  }
 
   submit(): void {
     if (this.userForm.valid) {
@@ -97,7 +108,8 @@ export class UserFormComponent implements OnInit {
       });
     } else {
       this.userForm.markAllAsTouched();
-      console.log('Form is invalid');
+      this.logValidationErrors(this.userForm); 
+      console.log('Form is invalid', this.userForm.value);
     }
   }
 
