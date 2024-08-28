@@ -1,4 +1,12 @@
-.btn-cf {
-    display: flex;
-    align-items: end;
-}
+.add-btn:hover {
+    background-color: #8275e4;
+  }
+  .add-btn {
+    background-color:#FFD7C4;
+    width: auto;
+    box-shadow: 0 0px 12px 4px rgba(29, 23, 23, 0.616);
+    margin-top: 10px;
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+  }

@@ -1,4 +1,4 @@
-<h2>Edit Forms</h2>
+<h2>Edit Form</h2>
 <hr />
 <form [formGroup]="editForm" (ngSubmit)="onsubmit()">
   <input class="fTitle" formControlName="formTitle" placeholder="Form Title" />
@@ -43,28 +43,89 @@
               "
             >
               <input [formControlName]="k" placeholder="Option" />
-              <button type="button" class="add-btn" class="dlt" (click)="removeOption(i, j, k)">
+              <button
+                type="button"
+                class="add-btn"
+                class="dlt"
+                (click)="removeOption(i, j, k)"
+              >
                 Delete this Option
               </button>
             </div>
             <button type="button" (click)="addOption(i, j)">Add Option</button>
           </div>
-          <div style="display: flex; padding-left: 2px;">
-          <div style="display:flex; flex-direction: row; padding-left: 3px; padding-right: 3px; border: 1px solid rgba(156, 153, 153, 0.322); margin-right: 2px;"><p style="margin-top:7px">Required</p><input style="width: fit-content" type="checkbox" formControlName="require"/></div>
-          <div style="display: flex; flex-direction: row;padding-left: 3px; padding-right: 3px; border: 1px solid rgba(156, 153, 153, 0.322); margin-right: 2px;"> <p style="margin-top:7px;margin-left: 15px;" >Show On Card</p><input type="checkbox" style="width: fit-content;" formControlName="showCard" /> </div>
-          <div style="display:flex;flex-direction:row; padding-left: 3px; padding-right: 3px; border: 1px solid rgba(156, 153, 153, 0.322);"><p style="margin-top:7px;margin-left: 15px;">Unique</p><input type="checkbox" formControlName="unique" style="width:fit-content" /></div> 
+          <div style="display: flex; padding-left: 2px">
+            <div
+              style="
+                display: flex;
+                flex-direction: row;
+                padding-left: 4px;
+                padding-right: 4px;
+                border: 1px solid rgba(156, 153, 153, 0.322);
+                margin-right: 2px;
+              "
+            >
+              <p style="margin-top: 7px">Required</p>
+              <input
+                style="width: fit-content; margin-top: 12px"
+                type="checkbox"
+                formControlName="require"
+              />
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: row;
+                padding-left: 4px;
+                padding-right: 4px;
+                border: 1px solid rgba(156, 153, 153, 0.322);
+                margin-right: 2px;
+              "
+            >
+              <p style="margin-top: 7px; margin-left: 15px">Show_On_Card</p>
+              <input
+                type="checkbox"
+                style="width: fit-content; margin-top: 12px"
+                formControlName="showCard"
+              />
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: row;
+                padding-left: 4px;
+                padding-right: 4px;
+                border: 1px solid rgba(156, 153, 153, 0.322);
+              "
+            >
+              <p style="margin-top: 7px; margin-left: 15px">Unique</p>
+              <input
+                type="checkbox"
+                formControlName="unique"
+                style="width: fit-content; margin-top: 12px"
+              />
+            </div>
           </div>
           <button type="button" class="dlt" (click)="removeField(i, j)">
             Delete this Field
           </button>
         </div>
       </div>
-      <button type="button" class="add-btn" (click)="addField(i)">Add Field</button>
+      <button type="button" class="add-btn" (click)="addField(i)">
+        Add Field
+      </button>
       <button type="button" class="dlt" (click)="removeSection(i)">
         Delete this Section
       </button>
     </div>
-    <button type="button" class="add-btn" (click)="addSection()">Add Section</button>
+    <button
+      type="button"
+      class="add-btn"
+      style="margin-left: 5px"
+      (click)="addSection()"
+    >
+      Add Section
+    </button>
   </div>
-  <button class="add-btn" type="submit">Submit</button>
+  <button class="add-btn submit" type="submit">Submit</button>
 </form>

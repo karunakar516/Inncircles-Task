@@ -52,7 +52,7 @@ export class UserFormComponent implements OnInit {
       title: ['', Validators.required],
       
       body: ['text', Validators.required],
-      value: [{ value: '', disabled: true }],
+      value: [{value:'', disabled: true} ],
       options: this.fb.array([]),
       require: [false],
       showCard: [false],
