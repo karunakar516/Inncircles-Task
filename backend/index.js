@@ -58,6 +58,16 @@ app.put("/api/user/:id", async (req, res) => {
     res.status(500).json({ message: "Failed to update data", error: e.message });
   }
 });
+app.delete("/api/user/:id", async (req, res) => {
+  try{
+    const data = await FormData.findByIdAndDelete(req.params.id); 
+    res.status(200).json({ message: "Data deleted successfully", data: data});
+  } 
+  catch(e){
+    console.error("Error deleting data:", e);
+    res.status(500).json({ message: "Failed to delete data", error: e.message });
+  }
+});
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });

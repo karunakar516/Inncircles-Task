@@ -9,6 +9,7 @@ import {
   FormArray,
   FormControl,
 } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-user-form',
@@ -20,8 +21,8 @@ import {
 })
 export class UserFormComponent implements OnInit {
   userForm!: FormGroup;
-
-  constructor(private fb: FormBuilder, public userservice: UserService) {}
+  constructor(private fb: FormBuilder, public userservice: UserService, private location: Location) {}
+  // constructor(private fb: FormBuilder, public userservice: UserService) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -100,7 +101,7 @@ export class UserFormComponent implements OnInit {
         next: (res) => {
           console.log('Form Submitted Successfully');
           window.alert('Successfully Submitted!');
-          location.reload();
+          this.location.back();
         },
         error: (e) => {
           console.log('Error Occured');
