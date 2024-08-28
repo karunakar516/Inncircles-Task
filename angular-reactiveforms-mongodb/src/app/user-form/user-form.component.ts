@@ -50,8 +50,8 @@ export class UserFormComponent implements OnInit {
   addField(sectionIndex: number): void {
     const field = this.fb.group({
       title: ['', Validators.required],
-      body: ['', Validators.required],
-      value: [{value:'',disabled: true}],
+      body: ['text', Validators.required],
+      value: [{ value: '', disabled: true }],
       options: this.fb.array([]),
       require: [false],
       showCard: [false],
@@ -73,7 +73,11 @@ export class UserFormComponent implements OnInit {
     this.getFields(sectionIndex).removeAt(fieldIndex);
   }
 
-  removeOption(sectionIndex: number, fieldIndex: number, optionIndex: number): void {
+  removeOption(
+    sectionIndex: number,
+    fieldIndex: number,
+    optionIndex: number
+  ): void {
     const field = this.getField(sectionIndex, fieldIndex);
     (field.get('options') as FormArray).removeAt(optionIndex);
   }
@@ -81,14 +85,16 @@ export class UserFormComponent implements OnInit {
   submit(): void {
     if (this.userForm.valid) {
       const formData = this.prepareFormData(this.userForm.value);
-      this.userservice.postData(formData).subscribe(
-        (response) => {
-          console.log('Form submitted successfully:', response);
+      this.userservice.postData(formData).subscribe({
+        next: (res) => {
+          console.log('Form Submitted Successfully');
+          window.alert('Successfully Submitted!');
+          location.reload();
         },
-        (error) => {
-          console.log('Error submitting form:', error);
-        }
-      );
+        error: (e) => {
+          console.log('Error Occured');
+        },
+      });
     } else {
       this.userForm.markAllAsTouched();
       console.log('Form is invalid');
@@ -99,7 +105,10 @@ export class UserFormComponent implements OnInit {
     const preparedSections = formValue.sections.map((section: any) => {
       const preparedFields = section.fields.map((field: any) => ({
         ...field,
-        options: field.body === 'multiSelect' || field.body === 'singleSelect' ? field.options : [],
+        options:
+          field.body === 'multiSelect' || field.body === 'singleSelect'
+            ? field.options
+            : [],
       }));
       return {
         ...section,
