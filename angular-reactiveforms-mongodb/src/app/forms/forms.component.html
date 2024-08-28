@@ -13,6 +13,7 @@
       <a [routerLink]="['/editForm', item?._id]" routerLinkActive="router-link-active">
         Edit Form
       </a>
+      <button (click)="deleteForm(item?._id)" style="color: red;">Delete Form</button>
     </div>
   </div>
 </div>

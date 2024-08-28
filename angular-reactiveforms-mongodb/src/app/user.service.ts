@@ -35,4 +35,7 @@ export class UserService {
     console.log(id)
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
+  deleteData(id: any): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${id}`).pipe(catchError(this.handleError));
+  }
 }

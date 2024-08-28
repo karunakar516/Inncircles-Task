@@ -19,5 +19,11 @@ export class FormsComponent {
       this.data=response.data;
     });
   }
+  deleteForm(id:any){
+    this.userservice.deleteData(id).subscribe((response) => {
+      alert(response.message);
+      this.ngOnInit();
+    });
+  }
 
 }
