@@ -21,7 +21,11 @@ import { Location } from '@angular/common';
 })
 export class UserFormComponent implements OnInit {
   userForm!: FormGroup;
-  constructor(private fb: FormBuilder, public userservice: UserService, private location: Location) {}
+  constructor(
+    private fb: FormBuilder,
+    public userservice: UserService,
+    private location: Location
+  ) {}
   // constructor(private fb: FormBuilder, public userservice: UserService) {}
 
   ngOnInit(): void {
@@ -51,9 +55,9 @@ export class UserFormComponent implements OnInit {
   addField(sectionIndex: number): void {
     const field = this.fb.group({
       title: ['', Validators.required],
-      
-      body: ['text', Validators.required],
-      value: [{value:'', disabled: true} ],
+
+      body: ['', Validators.required],
+      value: [{ value: '', disabled: true }],
       options: this.fb.array([]),
       require: [false],
       showCard: [false],
@@ -109,7 +113,7 @@ export class UserFormComponent implements OnInit {
       });
     } else {
       this.userForm.markAllAsTouched();
-      this.logValidationErrors(this.userForm); 
+      this.logValidationErrors(this.userForm);
       console.log('Form is invalid', this.userForm.value);
     }
   }

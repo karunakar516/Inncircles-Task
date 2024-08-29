@@ -1,4 +1,12 @@
-<h2>Edit Form</h2>
+<div style="margin-left: 90%">
+  <button
+    class="add-btn2"
+    (click)="downloadPDF()"
+    style="box-shadow: 0 0px 14px 4px rgba(215, 250, 253, 0.616)"
+  >
+    Download
+  </button>
+</div>
 <hr />
 <form [formGroup]="editForm" (ngSubmit)="onsubmit()">
   <input class="fTitle" formControlName="formTitle" placeholder="Form Title" />
@@ -18,7 +26,7 @@
           <input formControlName="title" placeholder="Field Title" />
           <div class="field-options">
             <select formControlName="body">
-              <option [defaultSelected]="true" value="text">Text</option>
+              <option value="text">Text</option>
               <option value="number">Number</option>
               <option value="date">Date</option>
               <option value="multiSelect">Multi Select</option>

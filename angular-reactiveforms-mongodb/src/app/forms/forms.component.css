@@ -10,3 +10,15 @@
     width: 100%;
     cursor: pointer;
   }
+  .add-btn1:hover {
+    background-color: #8275e4;
+  }
+  .add-btn1 {
+    background-color:white;
+    width: auto;
+    box-shadow: 0 0px 12px 4px rgba(29, 23, 23, 0.616);
+    margin-top: 10px;
+    height: 30px;
+    width: auto;
+    cursor: pointer;
+  }

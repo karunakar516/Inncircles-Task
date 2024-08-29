@@ -1,19 +1,33 @@
-<div style="margin-left:90%;">
-  <a routerLink="/createForm" style="width: fit-content;" >
-    <button class="add-btn" style="box-shadow: 0 0px 14px 4px rgba(215, 250, 253, 0.616);">Create Form!</button>
+<div style="margin-left: 90%">
+  <a routerLink="/createForm" style="width: fit-content">
+    <button
+      class="add-btn"
+      style="box-shadow: 0 0px 14px 4px rgba(215, 250, 253, 0.616)"
+    >
+      Create Form!
+    </button>
   </a>
 </div>
 
-<hr/>
+<hr />
 
 <div class="card-container">
   <div *ngFor="let item of data" class="card">
     <div class="card-content">
       <h3>{{ item?.formTitle }}</h3>
-      <a [routerLink]="['/editForm', item?._id]" routerLinkActive="router-link-active">
-        Edit Form
+      <a
+        [routerLink]="['/editForm', item?._id]"
+        routerLinkActive="router-link-active"
+      >
+        <button class="add-btn1">View/Edit Form</button>
       </a>
-      <button (click)="deleteForm(item?._id)" style="color: red;">Delete Form</button>
+      <button
+      class="add-btn1"
+        (click)="deleteForm(item?._id)"
+        style="color: red; cursor: pointer"
+      >
+        Delete Form
+      </button>
     </div>
   </div>
 </div>
@@ -29,7 +43,7 @@
     justify-content: center;
   }
   .card {
-    background-color:white;
+    background-color: white;
     color: black;
     border-radius: 8px;
     padding: 16px;
@@ -38,7 +52,7 @@
     height: 200px;
     align-items: center;
   }
-  .card:hover{
+  .card:hover {
     transform: scale(1.05);
     cursor: pointer;
   }
@@ -58,6 +72,5 @@
   }
   .card-content a:hover {
     text-decoration: underline;
-    box-shadow: 0 0 12px 6px rgb(45, 33, 33);
   }
 </style>
