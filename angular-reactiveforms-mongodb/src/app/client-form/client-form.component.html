@@ -4,9 +4,18 @@
       <div [formGroupName]="section.sectionTitle">
         <div *ngFor="let field of section.fields">
           <label>{{ field.title }}</label>
-          <input [formControlName]="field.title" [type]="field.type" />
-        </div>
+          <div *ngIf="field.body === 'singleSelect'">
+            <select [formControlName]="field.title">
+              <option *ngFor="let option of field.options" [value]="option">{{ option }}</option>
+            </select>
+          </div>
+          <div *ngIf="field.body !== 'singleSelect'">
+            <input [formControlName]="field.title" [type]="field.type" />
+          </div>
+      </div>
       </div>
     </div>
     <button type="submit">Submit</button>
   </form>
+
+  

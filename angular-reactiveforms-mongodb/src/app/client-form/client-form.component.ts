@@ -32,23 +32,21 @@ export class ClientFormComponent implements OnInit {
     if(id==null) id='1';
     this.userService.getFormStructure(id).subscribe(data => {
       this.dataObject = data.data;
-      console.log('Form structure:', this.dataObject);
-      this.buildForm(data);
+      this.buildForm(this.dataObject);
     });
   }
   buildForm(data: any): void {
+    const dataObject = data;
     const formGroup = this.fb.group({});
-    if (data.sections && Array.isArray(data.sections)) {
-      data.sections.forEach((section: any) => {
+    if (dataObject.sections && Array.isArray(dataObject.sections)) {
+      dataObject.sections.forEach((section: any) => {
         const sectionGroup = this.fb.group({});
         if (section.fields && Array.isArray(section.fields)) {
           section.fields.forEach((field: any) => {
-            console.log(`Adding control: ${field.name}`);
-            sectionGroup.addControl(field.title, new FormControl(field.name || ''));
+            sectionGroup.addControl(field.title, new FormControl(''));
           });
         }
-        console.log(`Adding section: ${section.sectionTitle}`);
-        // formGroup.addControl(section.sectionTitle, sectionGroup);
+        formGroup.addControl(section.sectionTitle, sectionGroup);
       });
     }
     this.fillForm = formGroup;
@@ -56,8 +54,7 @@ export class ClientFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.fillForm.valid) {
-      console.log('Form Data:', this.fillForm.value);
-      // Submit the form data to the server
+      console.log('Form dataObject:', this.fillForm.value);
     } else {
       this.fillForm.markAllAsTouched();
     }
