@@ -38,4 +38,7 @@ export class UserService {
   deleteData(id: any): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${id}`).pipe(catchError(this.handleError));
   }
+  getFormStructure(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
 }

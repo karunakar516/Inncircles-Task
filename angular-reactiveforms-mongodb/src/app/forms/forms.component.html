@@ -21,6 +21,9 @@
       >
         <button class="add-btn1">View/Edit Form</button>
       </a>
+      <a [routerLink]="['/clientForm',item?._id]" routerLinkActive="router-link-active">
+        <button class="add-btn1">submit Form</button>
+      </a>
       <button
       class="add-btn1"
         (click)="deleteForm(item?._id)"

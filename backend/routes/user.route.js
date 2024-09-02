@@ -3,10 +3,10 @@ const { addForm, getForms , getFormById , updateFormById , deleteFormById } = re
 const userRouter = express.Router();
 
 
-userController.post("/api/user", addForm);
-userController.get("/api/user", getForms);
-userController.get("/api/user/:id", getFormById);
-userController.put("/api/user/:id", updateFormById);
-userController.delete("/api/user/:id", deleteFormById);
+userRouter.post("/", addForm);
+userRouter.get("/", getForms);
+userRouter.get("/:id", getFormById);
+userRouter.put("/:id", updateFormById);
+userRouter.delete("/:id", deleteFormById);
 
 module.exports= {userRouter}

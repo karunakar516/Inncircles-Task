@@ -1,0 +1,12 @@
+<form [formGroup]="fillForm" (ngSubmit)="onSubmit()">
+    <div *ngFor="let section of dataObject?.sections">
+      <h3>{{ section.sectionTitle }}</h3>
+      <div [formGroupName]="section.sectionTitle">
+        <div *ngFor="let field of section.fields">
+          <label>{{ field.title }}</label>
+          <input [formControlName]="field.title" [type]="field.type" />
+        </div>
+      </div>
+    </div>
+    <button type="submit">Submit</button>
+  </form>

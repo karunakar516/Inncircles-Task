@@ -13,7 +13,7 @@ const FieldSchema = new mongoose.Schema({
     },
     value: {
       type: mongoose.Schema.Types.Mixed,
-      required: false,
+      required: true,
     },
     options: [
       {
@@ -42,4 +42,4 @@ const clientForm = mongoose.Schema(
     }
 );
 
-exports.clientForm = mongoose.model('clientForm', clientForm);
+module.exports = mongoose.model('clientForm', clientForm);

@@ -1,4 +1,4 @@
-const FormData = require("./models/formsData");
+const FormData = require("../models/formsData");
 
 const addForm = async (req, res) => {
     try {
