@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class UserService {
   private apiUrl = 'http://localhost:3000/api/user';
-
+  private clientApiUrl = 'http://localhost:3000/api/client';
   constructor(private http: HttpClient) {}
 
   postData(userData: any): Observable<any> {
@@ -40,5 +40,8 @@ export class UserService {
   }
   getFormStructure(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+  postClientData(clientData: any): Observable<any> {
+    return this.http.post<any>(this.clientApiUrl, clientData).pipe(catchError(this.handleError));
   }
 }

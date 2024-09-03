@@ -6,23 +6,10 @@ const FieldSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
-    body: {
-      type: String,
-      enum: ["text", "number", "date", "multiSelect", "singleSelect"],
-      required: true,
-    },
-    value: {
+    value: [{
       type: mongoose.Schema.Types.Mixed,
       required: true,
-    },
-    options: [
-      {
-        type: String,
-        required: function () {
-          return this.body === "singleSelect" || this.body === "multiSelect";
-        },
-      },
-    ],
+    }],
   });
   
   const SectionSchema = new mongoose.Schema({
@@ -37,6 +24,10 @@ const clientForm = mongoose.Schema(
         formId:{
             type: Schema.Types.ObjectId,
             required: true
+        },
+        formTitle: {
+            type: String,
+            required: true,
         },
         sections: [SectionSchema],
     }

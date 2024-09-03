@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const bodyParse = require("body-parser");
 const cors = require("cors");
 const {userRouter} = require("./routes/user.route");
+const {clientRouter} = require("./routes/client.route");
 const app = express();
 
 app.use(cors());
@@ -11,6 +12,7 @@ app.use(bodyParse.urlencoded({ extended: true }));
 
 
 app.use('/api/user',userRouter);
+app.use('/api/client',clientRouter);
 
 mongoose
   .connect("mongodb://localhost:27017/Angular-All-Data")
