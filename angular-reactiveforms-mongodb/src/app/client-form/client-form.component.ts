@@ -28,8 +28,7 @@ export class ClientFormComponent implements OnInit {
   }
 
   loadForm(): void {
-    let id :any= this.route.snapshot.paramMap.get('id');
-    if(id==null) id='1';
+    const id :string = this.route.snapshot.paramMap.get('id')||'1';
     this.userService.getFormStructure(id).subscribe(data => {
       this.dataObject = data.data;
       this.buildForm(this.dataObject);
